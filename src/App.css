@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    list-style: none;
+    /* background-color: black; */
+}
+.NAV{
+    height: 60px;
+    top: 0;
+    background: #000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-btn{
+    margin-top: 20px;
+    
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.nav-item{
+    
+    padding: 20px;
+    color: #eee;
+    text-decoration: none;
+    /* margin-right:  20px; */
+
+}
+
+
+ /* unvisited link */
+ .nav-item:link {
+    color:#eee;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  /* visited link */
+  .nav-item:visited {
+    color: #eee;
   }
-  to {
-    transform: rotate(360deg);
+  
+  /* mouse over link */
+  .nav-item:hover {
+    background-color: rgba(196, 21, 28, 1);
   }
+  
+  /* selected link */
+  .nav-item:active {
+    color:#eee;
+  } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+.jsformWrapper {
+    border: 1px solid rgba(196, 21, 28, 0.50);
+    padding: 2rem;
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 2px;
+    margin-top: 2rem;
+    box-shadow: 0 7px 5px #eee;
+    height: 350px;
+}
+
+    .jsformWrapper .formFielWrapper label {
+        width: 300px;
+        float: left;
+    }
+
+    .jsformWrapper .formFielWrapper input {
+        width: 300px;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        float: left;
+        font-family: sans-serif;
+    }
+
+    .jsformWrapper .formFielWrapper {
+        float: left;
+        margin-bottom: 1rem;
+    }
+
+    .jsformWrapper button {
+        background: rgba(196, 21, 28, 1);
+        border: none;
+        color: #fff;
+        width: 120px;
+        height: 40px;
+        line-height: 25px;
+        font-size: 16px;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+h3 {
+    text-align: center;
+    margin-top: 3rem;
+    color: rgba(196, 21, 28, 1);
+}
+_msg{
+    background-color: yellow;
+    font-size: 14px;
+
+
 }
