@@ -1,89 +1,91 @@
-import React from "react";
+import React,{useRef} from "react";
+import axios from "axios";
+import { sha256 } from 'js-sha256';
+
+
 
 function MbileAccount() {
+
+  function hndle() {
+  var d = new Date();
+  d = new Date(d.getTime() - 3000000);
+  var date_format_str = d.getFullYear().toString()+((d.getMonth()+1).toString().length==2?(d.getMonth()+1).toString():"0"+(d.getMonth()+1).toString())+(d.getDate().toString().length==2?d.getDate().toString():"0"+d.getDate().toString())+(d.getHours().toString().length==2?d.getHours().toString():"0"+d.getHours().toString())+((parseInt(d.getMinutes()/5)*5).toString().length==2?(parseInt(d.getMinutes()/5)*5).toString():"0"+(parseInt(d.getMinutes()/5)*5).toString());
+  console.log(date_format_str);
+
+  
+   var mydata = {
+    
+        pp_Version: "1.1",
+        pp_TxnType: "MWALLET",
+        pp_Language : "EN",
+        pp_MerchantID: "MC12607",
+        pp_SubMerchantID: "",
+        pp_Password: "yxs83t3529",
+        pp_BankID: "",
+        pp_ProductID: "",
+        pp_TxnRefNo: "T20201112025442",
+        pp_Amount: "1000",
+        pp_TxnCurrency: "PKR",
+        pp_TxnDateTime: "20201112185500",
+        pp_BillReference: "billRef",
+        pp_Description: "Description",
+        pp_TxnExpiryDateTime: "20201113185500",
+        pp_ReturnURL: "http://ideotech-ma.com/",
+        pp_SecureHash: "1AC78B753E935EC864255830BA5EFAD1EC44223DFCCAD6D1F84500EFC90D6571",
+        ppmpf_1: "03123456789",
+     
+    }
+  
+
+  const url ="hhttps://sandbox.jazzcash.com.pk/ApplicationAPI/API/Payment/DoTransaction";
+
+  axios
+    .post(url,mydata)
+    .then((response) => {
+        console.log('working,', response);
+    })
+    .catch((err) => {
+      console.log(`😱 request failed: ${err}`);
+    });
+
+}
+
+
+//   function intosh(mydata) {
+
+//     var str ='';
+//    Object.entries(mydata).forEach(entry => {
+//   const [key, value] = entry;
+//       str = str +'&'+value; 
+//       // console.log(`${key}: ${value}`);
+//     })
+//     var ssh = sha256.hmac('y914g075s3', str);
+//     return ssh
+//   }
+
+    
+    // console.log(textInput.current.value);
+  
+
+
+
   return (
     <div>
-        <h1>by Mobile Account</h1>
-      <h3>JazzCash HTTP POST (Page Redirection) development phase</h3>
-      <div className="jsformWrapper">
-        <form
-          name="jsform"
-          method="post"
-          action="https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform/"
-        >
-          <input type="hidden" name="pp_Version" value="1.1" />
-          <input type="hidden" name="pp_TxnType" value="MWALLET" />
-          <input type="hidden" name="pp_Language" value="EN" />
-          <input type="hidden" name="pp_MerchantID" value="MC12607" />
-          <input type="hidden" name="pp_SubMerchantID" value="" />
-          <input type="hidden" name="pp_Password" value="yxs83t3529" />
-          <input type="hidden" name="pp_BankID" value="TBANK" />
-          <input type="hidden" name="pp_ProductID" value="RETL" />
-
-          <div className="formFielWrapper">
-            <label className="active">pp_TxnRefNo: </label>
-            <input
-              type="text"
-              name="pp_TxnRefNo"
-              id="pp_TxnRefNo"
-              value="T20201109235832"
-            />
-          </div>
-
-          <div className="formFielWrapper">
-            <label className="active">pp_Amount: </label>
-            <input type="text" name="pp_Amount" value="1000" />
-          </div>
-
-          <input type="hidden" name="pp_TxnCurrency" value="PKR" />
-          <input type="hidden" name="pp_TxnDateTime" value="20201109235832" />
-          <div className="formFielWrapper">
-            <label className="active">pp_BillReference: </label>
-            <input type="text" name="pp_BillReference" value="billRef" />
-          </div>
-
-          <div className="formFielWrapper">
-            <label className="active">pp_Description: </label>
-            <input
-              type="text"
-              name="pp_Description"
-              value="Description of transaction"
-            />
-          </div>
-
-          <input
-            type="hidden"
-            name="pp_TxnExpiryDateTime"
-            value="20201110235832"
+        
+     <input
+            onClick={hndle}
+            type="button"
+            name="pp_TxnType"
+            value="click to send request"
           />
-
-          <div className="formFielWrapper">
-            <label className="active">pp_ReturnURL: </label>
-            <input type="text" name="pp_ReturnURL" value="ideotech-ma.com" />
-          </div>
-
-          <input type="hidden" name="pp_SecureHash" value="" />
-          <input type="hidden" name="ppmpf_1" value="1" />
-          <input type="hidden" name="ppmpf_2" value="2" />
-          <input type="hidden" name="ppmpf_3" value="3" />
-          <input type="hidden" name="ppmpf_4" value="4" />
-          <input type="hidden" name="ppmpf_5" value="5" />
-          <button type="button" onclick="submitForm()">
-            Submit
-          </button>
-        </form>
-
-        {/* <label id="salt" style="display:none;">y914g075s3</label> */}
-        <br />
-        <br />
-        <div className="formFielWrapper">
-          <label className="">Hash values string: </label>
-          <input type="text" id="hashValuesString" value="" />
-          <br />
-          <br />
-        </div>
-      </div>
-    </div>
+          {/* <input
+            // ref={pp_Language}
+            // onChange={(event) => setpp_Language(event.target.value)}
+            type="text"
+            name="pp_Language"
+            value="EN"
+          /> */}
+      </div> 
   );
 }
 
